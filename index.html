@@ -18,14 +18,16 @@
 
   <body>
     <main class="main-wrapper">
-      <a
-        href="assets/Cv_tirthomondal.pdf"
-        download
-        class="download-cv-btn"
-        aria-label="Download CV"
-      >
-        <i class="bi bi-download"></i> Download CV
-      </a>
+      <div class="download-cv-btn-wrapper">
+        <a
+          href="CV_Tirtho_Mondal.pdf"
+          download
+          class="download-cv-btn"
+          aria-label="Download CV"
+        >
+          <i class="bi bi-download"></i> Download CV
+        </a>
+      </div>
 
       <header class="text-center">
         <h1 class="typing">Hi, I'm <span class="name">Tirtho Mondal</span></h1>
@@ -222,6 +224,7 @@
         <h2 class="section-heading heading-purple">📚 Publications</h2>
 
         <div class="publication-list">
+          <!-- Publication 1 -->
           <article class="publication-card">
             <div class="publication-details">
               <h3 class="publication-title">
@@ -231,28 +234,9 @@
                 <strong class="highlight-orange">Tirtho Mondal</strong>, Jane
                 Doe, John Smith
               </p>
-            </div>
-            <div class="publication-actions">
-              <span class="pub-type journal" aria-label="Journal Publication"
-                >Journal</span
-              >
-              <a
-                href="downloads/deep-learning-image-recognition.pdf"
-                class="download-btn"
-                download
-                aria-label="Download publication PDF"
-              >
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="publication-card">
-            <div class="publication-details">
-              <h3 class="publication-title">AI Applications in Healthcare</h3>
-              <p class="publication-authors">
-                <strong class="highlight-orange">Tirtho Mondal</strong>, Alice
-                Cooper
+              <p class="publication-meta">
+                <i class="bi bi-journal-text"></i> International Conference on
+                Artificial Intelligence, 2024
               </p>
             </div>
             <div class="publication-actions">
@@ -262,10 +246,38 @@
                 >Conference</span
               >
               <a
+                href="downloads/deep-learning-image-recognition.pdf"
+                class="download-btn"
+                download
+                aria-label="Download Deep Learning for Image Recognition PDF"
+              >
+                <i class="bi bi-download"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- Publication 2 -->
+          <article class="publication-card">
+            <div class="publication-details">
+              <h3 class="publication-title">AI Applications in Healthcare</h3>
+              <p class="publication-authors">
+                <strong class="highlight-orange">Tirtho Mondal</strong>, Alice
+                Cooper
+              </p>
+              <p class="publication-meta">
+                <i class="bi bi-journal-medical"></i> Journal of Healthcare
+                Informatics, 2025
+              </p>
+            </div>
+            <div class="publication-actions">
+              <span class="pub-type journal" aria-label="Journal Publication"
+                >Journal</span
+              >
+              <a
                 href="downloads/ai-healthcare.pdf"
                 class="download-btn"
                 download
-                aria-label="Download publication PDF"
+                aria-label="Download AI Applications in Healthcare PDF"
               >
                 <i class="bi bi-download"></i>
               </a>
