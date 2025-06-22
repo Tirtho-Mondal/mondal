@@ -1,13 +1,53 @@
-/* Base Reset and Typography */
+/* =========================
+   1. Base Reset & Typography
+   ========================= */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Ensure header is positioned */
+/* =========================
+   2. Body & Background
+   ========================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: url("assets/dark.png") center center / cover no-repeat fixed;
+  color: #f9fafb;
+  position: relative;
+  z-index: 0;
+  min-height: 100vh;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+/* =========================
+   3. Header & Download Button
+   ========================= */
 header {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  width: 90%;
+  box-sizing: border-box;
 }
 
 /* Download CV Button – Always Top Right */
@@ -48,164 +88,58 @@ header {
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: url("tirtho using gpt.png") center center / cover no-repeat fixed;
-  color: #f9fafb;
-  /* line-height: 1.6; */
-  position: relative;
-  z-index: 0;
-  min-height: 100vh;
-}
-
-/* Dark overlay on background */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 40% transparent black */
-  z-index: -1;
-}
-
-/* animation */
-
-/* Only for larger screens */
-@media (min-width: 1024px) {
-  body::before,
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    height: 100%;
-    width: 60px;
-    z-index: 1;
-    pointer-events: none;
-    background-size: 200% 100%;
-    animation: sideGlow 6s ease-in-out infinite alternate;
-  }
-}
-
-@media screen and (min-width: 1224px) {
-  .candle-wrapper {
-    position: fixed;
-    bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 100;
-  }
-
-  .left-candle {
-    left: 30px;
-  }
-
-  .right-candle {
-    right: 30px;
-  }
-
-  .flame {
-    width: 35px;
-    height: 50px;
-    background: radial-gradient(
-      ellipse at center,
-      #ffcc00 0%,
-      #ff6600 60%,
-      rgba(255, 102, 0, 0) 100%
-    );
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: flicker 1.3s infinite ease-in-out;
-    transform-origin: bottom center;
-    margin-bottom: -10px;
-    box-shadow: 0 0 20px 8px rgba(255, 150, 0, 0.5);
-  }
-
-  @keyframes flicker {
-    0% {
-      transform: scale(1) translateY(0) rotate(0deg);
-      opacity: 1;
-    }
-    20% {
-      transform: scale(1.1) translateY(-1px) rotate(-2deg);
-      opacity: 0.95;
-    }
-    40% {
-      transform: scale(1.05) translateY(1px) rotate(1deg);
-      opacity: 1;
-    }
-    60% {
-      transform: scale(1.1) translateY(-1px) rotate(2deg);
-      opacity: 0.9;
-    }
-    80% {
-      transform: scale(1.05) translateY(1px) rotate(-1deg);
-      opacity: 0.97;
-    }
-    100% {
-      transform: scale(1) translateY(0) rotate(0deg);
-      opacity: 1;
-    }
-  }
-
-  .candle {
-    width: 30px;
-    height: 80px;
-    background: linear-gradient(to top, #f5f5f5, #ddd);
-    border-radius: 6px;
-    position: relative;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4),
-      0 0 20px rgba(255, 255, 255, 0.1);
-  }
-
-  .candle::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 10px;
-    background-color: #999;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-
-  .wick {
-    width: 3px;
-    height: 12px;
-    background-color: #333;
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-  }
-}
-
-/* Glow animation */
-@keyframes sideGlow {
-  0% {
-    background-position: 0% 0%;
-    opacity: 0.4;
-  }
-  50% {
-    background-position: 100% 0%;
-    opacity: 0.6;
-  }
-  100% {
-    background-position: 0% 0%;
-    opacity: 0.4;
-  }
-}
-
+/* =========================
+   4. Name & Greeting
+   ========================= */
 .name {
   color: #007acc; /* bright blue color */
 }
 
+.text-center {
+  text-align: center;
+}
+
+.greeting {
+  display: inline-block;
+  min-width: 7ch; /* Space for "Hi I'm " */
+}
+
+/* Waving hand animation */
+.hand {
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+  font-size: 1.5em;
+  margin-left: 5px;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(15deg);
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  45% {
+    transform: rotate(15deg);
+  }
+  60% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* =========================
+   5. Intro Section & Card
+   ========================= */
 .intor {
   display: flex;
   flex-direction: column;
@@ -235,6 +169,9 @@ body::before {
   }
 }
 
+/* =========================
+   6. Highlight Colors
+   ========================= */
 .highlight-blue {
   color: #2563eb; /* Blue */
 }
@@ -274,7 +211,9 @@ a:hover {
   color: #3b82f6;
 }
 
-/* Fields of Interest Section */ /* Fields of Interest Section */
+/* =========================
+   7. Fields of Interest
+   ========================= */
 .interest-section {
   margin-top: 1.5rem;
   padding-top: 1rem;
@@ -331,7 +270,9 @@ a:hover {
   }
 }
 
-/* Layout Container */
+/* =========================
+   8. Main Layout
+   ========================= */
 .main-wrapper {
   padding: 2rem;
   max-width: 1200px;
@@ -340,7 +281,9 @@ a:hover {
   box-sizing: border-box;
 }
 
-/* Typing Animation */
+/* =========================
+   9. Typing Animation
+   ========================= */
 .typing {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
@@ -366,22 +309,9 @@ a:hover {
   }
 }
 
-/* Section Headings - Fully Responsive */
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* horizontal center */
-  justify-content: center; /* vertical center if enough height */
-  padding: 2rem 1rem;
-  max-width: 800px;
-  margin: 0 auto;
-  color: #fff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center; /* center text inside header */
-  width: 90%; /* allow some horizontal padding on very small screens */
-  box-sizing: border-box;
-}
-
+/* =========================
+   10. Section Headings
+   ========================= */
 .section-heading {
   border-bottom: 2px solid currentColor;
   margin-bottom: 1.5rem;
@@ -414,7 +344,9 @@ header {
   color: #a78bfa;
 }
 
-/* Responsive Grid for Cards */
+/* =========================
+   11. Project Types & Cards
+   ========================= */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -454,7 +386,9 @@ header {
   position: relative;
 }
 
-/* Skills Section */
+/* =========================
+   12. Skills Section
+   ========================= */
 .skills-list {
   display: flex;
   flex-wrap: wrap;
@@ -476,8 +410,9 @@ header {
   color: #ef4444;
 }
 
-/* publications */
-
+/* =========================
+   13. Publications
+   ========================= */
 .publication {
   background: white;
   border-radius: 8px;
@@ -655,8 +590,9 @@ header {
   }
 }
 
-/* Footer */
-/* Footer */
+/* =========================
+   14. Footer
+   ========================= */
 footer {
   margin-top: 3rem;
   font-size: 0.875rem;
@@ -737,109 +673,9 @@ footer {
   }
 }
 
-/* Project Cards */
-.project-card {
-  background: rgba(30, 41, 59, 0.85);
-  color: #f3f4f6;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  padding: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Responsive Adjustments */
-
-/* Tablets and below */
-@media (max-width: 1024px) {
-  .main-wrapper {
-    padding: 1.5rem;
-  }
-
-  .section-heading {
-    font-size: 1.5rem;
-  }
-
-  .typing {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-  }
-}
-
-/* Mobile landscape and below */
-@media (max-width: 768px) {
-  .main-wrapper {
-    padding: 1rem;
-  }
-
-  .section-heading {
-    font-size: 1.25rem;
-  }
-
-  .typing {
-    font-size: 1.75rem;
-  }
-
-  .skills-list {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .skills-list ul {
-    flex: 1 1 100%;
-    padding-left: 1rem;
-  }
-
-  header {
-    padding: 1.5rem 1rem;
-    max-width: 100%;
-    width: 95%;
-  }
-
-  .section-heading {
-    font-size: clamp(1.25rem, 5vw, 2rem);
-    margin-bottom: 1.25rem;
-  }
-}
-
-/* Small phones and below */
-@media (max-width: 480px) {
-  .intor {
-    height: auto;
-    padding: 2rem 1rem;
-  }
-
-  .typing {
-    font-size: 1.5rem;
-    border-right-width: 2px;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .project-type-box,
-  .project-card {
-    padding: 1rem;
-  }
-
-  header {
-    padding: 1rem 0.5rem;
-    width: 100%;
-  }
-
-  .section-heading {
-    font-size: clamp(1.1rem, 6vw, 1.75rem);
-    margin-bottom: 1rem;
-  }
-}
-
-/* academci*/
-
+/* =========================
+   15. Academic Section
+   ========================= */
 .academic-track {
   padding: 2rem 1rem;
   max-width: 900px;
@@ -996,4 +832,496 @@ footer {
 .fade-slide-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* =========================
+   16. Animations & Effects
+   ========================= */
+#starry-sky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+/* Rocket Styles */
+#rocket {
+  position: fixed;
+  width: 2vw; /* relative width */
+  max-width: 20px; /* max size */
+  height: 4vw; /* keep aspect ratio */
+  max-height: 40px;
+}
+
+/* Fins */
+#rocket .fin {
+  position: absolute;
+  bottom: 0;
+  width: 0.7vw;
+  max-width: 7px;
+  height: 1vw;
+  max-height: 10px;
+  background: #ff3c0076;
+}
+#rocket .fin.left {
+  left: -0.3vw;
+  max-left: -3px;
+  transform: skewY(15deg);
+}
+#rocket .fin.right {
+  right: -0.3vw;
+  max-right: -3px;
+  transform: skewY(-15deg);
+}
+
+/* Flame */
+#rocket .flame {
+  position: absolute;
+  top: 70%; /* relative to rocket height */
+  left: 35%;
+  width: 0.6vw;
+  max-width: 6px;
+  height: 1.2vw;
+  max-height: 12px;
+  background: radial-gradient(#ffff66, #ff6600);
+  border-radius: 50% 50% 30% 30%;
+  box-shadow: 0px 0px 1.2vw rgba(255, 150, 0, 0.5);
+  animation: flameFlicker 0.15s infinite;
+}
+
+@keyframes flameFlicker {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.3);
+  }
+}
+
+/* Smoke Trail */
+.smoke {
+  position: fixed;
+  width: 0.6vw;
+  max-width: 6px;
+  height: 0.6vw;
+  max-height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  animation: fadeOut 1.5s ease-out;
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* Optional: adjust sizes for very small screens */
+@media (max-width: 400px) {
+  #rocket {
+    width: 4vw;
+    height: 8vw;
+  }
+  #rocket .fin {
+    width: 1.4vw;
+    height: 2vw;
+    left: -0.6vw;
+    right: -0.6vw;
+  }
+  #rocket .flame {
+    width: 1.2vw;
+    height: 2.4vw;
+    box-shadow: 0px 0px 2.4vw rgba(255, 150, 0, 0.5);
+  }
+  .smoke {
+    width: 1.2vw;
+    height: 1.2vw;
+  }
+}
+
+/* =========================
+   17.  satalite
+   ========================= */
+
+/* Satellite container */
+#satellite {
+  position: fixed;
+  width: 6vw; /* 6% of viewport width */
+  max-width: 60px; /* max size */
+  height: 3vw; /* proportional height */
+  max-height: 30px;
+  top: 5vh; /* 5% viewport height from top */
+  left: 5vw; /* 5% viewport width from left */
+  cursor: default;
+  user-select: none;
+  z-index: 0; /* Just above background but behind rocket */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Satellite main body */
+#satellite .body {
+  width: 50%;
+  height: 66.67%; /* keeps approx 30x20 ratio */
+  background: linear-gradient(
+    145deg,
+    #5a5a5a,
+    #a0a0a0
+  ); /* subtle metallic gradient */
+  border-radius: 0.25vw;
+  box-shadow: inset 0 0.2vw 0.4vw rgba(255, 255, 255, 0.3),
+    /* highlight top */ inset 0 -0.2vw 0.4vw rgba(0, 0, 0, 0.5),
+    /* shadow bottom */ 0 0.2vw 0.5vw rgba(0, 0, 0, 0.4); /* outer shadow */
+  position: relative;
+  z-index: 1;
+  border: 0.05vw solid #444;
+}
+
+/* Add subtle panel lines for detail */
+#satellite .body::before {
+  content: "";
+  position: absolute;
+  top: 0.4vw;
+  left: 0.6vw;
+  width: 60%; /* 18px approx */
+  height: 40%; /* 12px approx */
+  border: 0.05vw solid #666;
+  box-shadow: 0.4vw 0 0 #666, 0 0.4vw 0 #666, 0.4vw 0.4vw 0 #666;
+  pointer-events: none;
+  border-radius: 0.05vw;
+  background: transparent;
+  z-index: 2;
+}
+
+/* Satellite wings container */
+#satellite .wings {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 40%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Each wing */
+#satellite .wing {
+  width: 25%;
+  height: 100%;
+  background: white;
+  border-radius: 0.15vw;
+  box-shadow: 0 0 0.3vw #666 inset;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Bangladesh flag on each wing */
+#satellite .wing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #006a4e; /* Green background */
+  z-index: 0;
+}
+
+/* Red circle on flag */
+#satellite .wing::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  background: #f42a41; /* Red circle */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Media Query for very small screens */
+@media (max-width: 400px) {
+  #satellite {
+    width: 10vw;
+    height: 5vw;
+    top: 7vh;
+    left: 3vw;
+  }
+}
+
+/* Galaxy animation */
+.galaxy {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+
+  /* Responsive size */
+  width: 12vw;
+  height: 12vw;
+  max-width: 150px;
+  max-height: 150px;
+
+  border-radius: 50%;
+  filter: blur(1px) drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.3));
+  mix-blend-mode: screen;
+
+  opacity: 0.85;
+
+  will-change: transform;
+}
+
+/* Different realistic color schemes for each galaxy */
+#galaxy1 {
+  top: 15vh;
+  left: 10vw;
+
+  background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.9) 10%,
+      rgba(130, 195, 255, 0.2) 40%,
+      /* Blue tint */ rgba(130, 195, 255, 0) 100%
+    ),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(130, 195, 255, 0.08) 0deg 15deg,
+      rgba(130, 195, 255, 0) 15deg 30deg
+    );
+}
+
+#galaxy2 {
+  top: 50vh;
+  right: 15vw;
+
+  background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.9) 10%,
+      rgba(255, 175, 100, 0.25) 40%,
+      /* Orange tint */ rgba(255, 175, 100, 0) 100%
+    ),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255, 175, 100, 0.08) 0deg 15deg,
+      rgba(255, 175, 100, 0) 15deg 30deg
+    );
+}
+
+#galaxy3 {
+  bottom: 20vh;
+  left: 50vw;
+
+  background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.9) 10%,
+      rgba(180, 130, 255, 0.25) 40%,
+      /* Purple tint */ rgba(180, 130, 255, 0) 100%
+    ),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(180, 130, 255, 0.08) 0deg 15deg,
+      rgba(180, 130, 255, 0) 15deg 30deg
+    );
+}
+
+/* =========================
+   18. Candle Animation
+   ========================= */
+
+/* Only for larger screens */
+@media (min-width: 1024px) {
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    z-index: 1;
+    pointer-events: none;
+    background-size: 200% 100%;
+    animation: sideGlow 6s ease-in-out infinite alternate;
+  }
+}
+
+@media screen and (min-width: 1224px) {
+  .candle-wrapper {
+    position: fixed;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+  }
+
+  .left-candle {
+    left: 30px;
+  }
+
+  .right-candle {
+    right: 30px;
+  }
+
+  .flame {
+    width: 35px;
+    height: 50px;
+    background: radial-gradient(
+      ellipse at center,
+      #ffcc00 0%,
+      #ff6600 60%,
+      rgba(255, 102, 0, 0) 100%
+    );
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 1.3s infinite ease-in-out;
+    transform-origin: bottom center;
+    margin-bottom: -10px;
+    box-shadow: 0 0 20px 8px rgba(255, 150, 0, 0.5);
+  }
+
+  @keyframes flicker {
+    0% {
+      transform: scale(1) translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    20% {
+      transform: scale(1.1) translateY(-1px) rotate(-2deg);
+      opacity: 0.95;
+    }
+    40% {
+      transform: scale(1.05) translateY(1px) rotate(1deg);
+      opacity: 1;
+    }
+    60% {
+      transform: scale(1.1) translateY(-1px) rotate(2deg);
+      opacity: 0.9;
+    }
+    80% {
+      transform: scale(1.05) translateY(1px) rotate(-1deg);
+      opacity: 0.97;
+    }
+    100% {
+      transform: scale(1) translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  .candle {
+    width: 30px;
+    height: 80px;
+    background: linear-gradient(to top, #f5f5f5, #ddd);
+    border-radius: 6px;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4),
+      0 0 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .candle::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 10px;
+    background-color: #999;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .wick {
+    width: 3px;
+    height: 12px;
+    background-color: #333;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+}
+
+/* Glow animation */
+@keyframes sideGlow {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.4;
+  }
+  50% {
+    background-position: 100% 0%;
+    opacity: 0.6;
+  }
+  100% {
+    background-position: 0% 0%;
+    opacity: 0.4;
+  }
+}
+
+/* Gradient background animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Subtle pulsing effect */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(0, 122, 204, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 15px rgba(0, 212, 255, 1);
+  }
+}
+
+/* Responsive font sizes */
+@media (max-width: 1200px) {
+  .name {
+    font-size: 3rem;
+    letter-spacing: 1.3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: 2rem;
+    letter-spacing: 0.8px;
+  }
+
+  .hand {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none;
+    cursor: default;
+    opacity: 1;
+    filter: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+  }
 }
