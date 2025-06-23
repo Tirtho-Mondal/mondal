@@ -366,3 +366,45 @@ function rotateGalaxies() {
 }
 
 rotateGalaxies();
+
+// missiles
+function launchMissile() {
+  const missile = document.createElement("div");
+  missile.classList.add("missile");
+
+  const nose = document.createElement("div");
+  nose.classList.add("missile-nose");
+  const body = document.createElement("div");
+  body.classList.add("missile-body");
+
+  const fire = document.createElement("div");
+  fire.classList.add("fire");
+  body.appendChild(fire);
+
+  missile.appendChild(nose);
+  missile.appendChild(body);
+
+  // Random horizontal start position
+  const startX = Math.random() * window.innerWidth;
+  missile.style.left = `${startX}px`;
+  missile.style.bottom = "-100px";
+
+  document.body.appendChild(missile);
+
+  // Create smoke trail
+  const smokeInterval = setInterval(() => {
+    const smoke = document.createElement("div");
+    smoke.classList.add("smokemissile");
+    missile.appendChild(smoke);
+    setTimeout(() => smoke.remove(), 1500);
+  }, 80);
+
+  // Cleanup after animation completes
+  setTimeout(() => {
+    clearInterval(smokeInterval);
+    missile.remove();
+  }, 3000);
+}
+
+// Launch missiles every 1 to 2.5 seconds randomly
+setInterval(launchMissile, Math.random() * 1500 + 1000);

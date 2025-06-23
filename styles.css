@@ -50,6 +50,12 @@ header {
   box-sizing: border-box;
 }
 
+.logo {
+  height: 60px;
+  width: auto;
+  margin: 10px;
+}
+
 /* Download CV Button – Always Top Right */
 .download-cv-btn {
   position: absolute; /* stays in top-right of header */
@@ -1056,6 +1062,105 @@ footer {
     left: 3vw;
   }
 }
+
+/* -------------------- */
+
+/* Missile container */
+.missile {
+  position: fixed;
+  width: 14px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  animation: launchMissile3D 3s forwards;
+}
+
+.missile-nose {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 10px solid #ff0000;
+}
+
+.missile-body {
+  width: 14px;
+  height: 30px;
+  background: linear-gradient(#ff0000, #660000);
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Fire glow */
+.fire {
+  position: absolute;
+  bottom: -8px;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #ffd700, #ff8c00, transparent);
+  border-radius: 50%;
+  opacity: 0.9;
+  animation: firePulse 0.3s infinite alternate;
+}
+@keyframes firePulse {
+  from {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+/* Smoke puffs */
+.smokemissile {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #d2c9ba, #8c7d67);
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: smokeTrail 1.5s ease-in-out forwards;
+}
+@keyframes smokeTrail {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+    filter: blur(0);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateY(-30px) scale(2);
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
+/* Missile flying into background */
+@keyframes launchMissile3D {
+  0% {
+    bottom: -100px;
+    opacity: 1;
+    transform: translateX(0) scale(1) rotate(0deg);
+  }
+  100% {
+    bottom: 100vh;
+    opacity: 0;
+    transform: translateX(50px) scale(0.3) rotate(20deg);
+  }
+}
+
+/* ------------------ */
 
 /* Galaxy animation */
 .galaxy {
