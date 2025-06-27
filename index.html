@@ -266,7 +266,10 @@
               <i class="fab fa-github"></i>
             </a>
           </div>
-          <div class="project-type-box">
+          <div
+            class="project-type-box"
+            onclick="animateAndOpen(event, 'https://github.com/Tirtho-Mondal/CSE-Family')"
+          >
             <span class="language-badge">JavaFX</span>
             <h3>CSE Family</h3>
             <p>Interactive learning & networking system for CSE.</p>
@@ -300,7 +303,12 @@
           <!-- Publication 1 -->
           <article class="publication-card">
             <div class="publication-details">
-              <h3 class="publication-title">
+              <h3
+                class="publication-title"
+                data-pdf="assets/Cv_tirthomondal.pdf"
+                data-type="📘 Conference Paper"
+                onclick="handlePublicationClick(this)"
+              >
                 Deep Learning for Image Recognition
               </h3>
               <p class="publication-authors">
@@ -313,16 +321,14 @@
               </p>
             </div>
             <div class="publication-actions">
-              <span
-                class="pub-type conference"
-                aria-label="Conference Publication"
+              <span class="pub-type conference" aria-label="Conference Paper"
                 >Conference</span
               >
               <a
-                href="downloads/deep-learning-image-recognition.pdf"
+                href="downloads/ai-healthcare.pdf"
                 class="download-btn"
                 download
-                aria-label="Download Deep Learning for Image Recognition PDF"
+                aria-label="Download PDF"
               >
                 <i class="bi bi-download"></i>
               </a>
@@ -332,14 +338,21 @@
           <!-- Publication 2 -->
           <article class="publication-card">
             <div class="publication-details">
-              <h3 class="publication-title">AI Applications in Healthcare</h3>
+              <h3
+                class="publication-title"
+                data-pdf="pdfs/deep-learning.pdf"
+                data-type="📄 Journal Article"
+                onclick="handlePublicationClick(this)"
+              >
+                Deep Learning for Image Recognition
+              </h3>
               <p class="publication-authors">
-                <strong class="highlight-orange">Tirtho Mondal</strong>, Alice
-                Cooper
+                <strong class="highlight-orange">Tirtho Mondal</strong>, Jane
+                Doe, John Smith
               </p>
               <p class="publication-meta">
-                <i class="bi bi-journal-medical"></i> Journal of Healthcare
-                Informatics, 2025
+                <i class="bi bi-journal-text"></i> International Journal on AI,
+                2024
               </p>
             </div>
             <div class="publication-actions">
@@ -350,7 +363,7 @@
                 href="downloads/ai-healthcare.pdf"
                 class="download-btn"
                 download
-                aria-label="Download AI Applications in Healthcare PDF"
+                aria-label="Download PDF"
               >
                 <i class="bi bi-download"></i>
               </a>
@@ -450,5 +463,22 @@
     </script>
     <!-- Your own custom JavaScript -->
     <script src="scripts.js"></script>
+
+    <!-- PDF Viewer Modal -->
+    <div id="pdfViewer" class="pdf-viewer">
+      <div class="pdf-overlay" onclick="closePdfViewer()"></div>
+      <div class="pdf-modal">
+        <div class="pdf-header">
+          <span class="pdf-title">Viewing PDF</span>
+          <button class="pdf-close" onclick="closePdfViewer()">×</button>
+        </div>
+        <iframe
+          id="pdfFrame"
+          src=""
+          title="PDF Viewer"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
   </body>
 </html>

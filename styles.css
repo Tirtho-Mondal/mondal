@@ -447,6 +447,7 @@ a:hover {
   flex-wrap: wrap;
   gap: 1.25rem;
   margin-top: 1rem;
+  z-index: -1;
 }
 
 .skills-list ul {
@@ -640,6 +641,88 @@ a:hover {
     width: 100%;
     justify-content: flex-start;
     gap: 1rem;
+  }
+}
+
+/*pdf view*/
+.pdf-viewer {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+  flex-direction: column;
+}
+
+.pdf-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.pdf-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  height: 85vh;
+  max-width: 1000px;
+  max-height: 95vh;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.pdf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #f0f0f0;
+}
+
+.pdf-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.pdf-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}
+
+.pdf-close:hover {
+  color: #000;
+}
+
+.pdf-modal iframe {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .pdf-modal {
+    width: 95vw;
+    height: 80vh;
+  }
+
+  .pdf-title {
+    font-size: 0.95rem;
+  }
+
+  .pdf-close {
+    font-size: 1.3rem;
   }
 }
 

@@ -424,3 +424,25 @@ function animateAndOpen(event, url) {
 
   return false; // prevent default link behavior
 }
+
+function handlePublicationClick(element) {
+  const pdf = element.getAttribute("data-pdf");
+  const type = element.getAttribute("data-type");
+  openPdfViewer(pdf, type);
+}
+
+function openPdfViewer(pdfUrl, paperType) {
+  document.getElementById("pdfFrame").src = pdfUrl;
+  document.querySelector(".pdf-title").innerText = paperType || "Viewing PDF";
+  document.getElementById("pdfViewer").style.display = "flex";
+}
+
+function closePdfViewer() {
+  document.getElementById("pdfViewer").style.display = "none";
+  document.getElementById("pdfFrame").src = "";
+}
+
+// Close with ESC
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") closePdfViewer();
+});
