@@ -392,6 +392,53 @@ a:hover {
   position: relative;
 }
 
+/* github icon */
+
+.github-icon-link {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: transparent;
+  color: white;
+  width: 42px;
+  height: 42px;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.github-icon-link:hover {
+  transform: scale(1.07);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes clickRotateShrink {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: rotate(720deg) scale(0.1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(720deg) scale(3);
+    opacity: 0;
+  }
+}
+
+.github-icon-link.animate-click {
+  animation: clickRotateShrink 0.7s forwards ease-in-out;
+  pointer-events: none; /* prevent multiple clicks */
+}
+
 /* =========================
    12. Skills Section
    ========================= */

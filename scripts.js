@@ -408,3 +408,19 @@ function launchMissile() {
 
 // Launch missiles every 1 to 2.5 seconds randomly
 setInterval(launchMissile, Math.random() * 1500 + 1000);
+
+function animateAndOpen(event, url) {
+  event.preventDefault(); // prevent immediate link open
+
+  const el = event.currentTarget;
+  el.classList.add("animate-click");
+
+  // Wait for animation to finish (700ms)
+  setTimeout(() => {
+    window.open(url, "_blank");
+    // Reset animation class for future clicks
+    el.classList.remove("animate-click");
+  }, 700);
+
+  return false; // prevent default link behavior
+}
